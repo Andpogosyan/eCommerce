@@ -1,0 +1,90 @@
+.itemsPage_mainBlock{
+    display: flex;
+    flex-wrap: wrap;
+    padding-top: 20px;
+}
+
+.itemsPage_title {
+    font-size: 35px;
+    color: grey;
+    width: 100%;
+    font-weight: bold;
+}
+
+.itemsPage_rightBlock__code{
+    font-size: 10px;
+    color: grey;
+}
+
+.itemsPage_leftBlock{
+    width: 60%;
+}
+.itemsPage_leftBlock img {
+    object-fit: contain;
+    width: 100%;
+    max-height: calc(100vh - 200px)
+}
+.itemsPage_rightBlock {
+    padding: 20px;
+    width: 40%;
+}
+
+.inline_span_block{
+    display: inline-block;
+    width: 100%;
+}
+
+.itemsPage_rightBlock_description{
+    font-size: 20px;
+}
+
+.itemsPage_rightBlock_price{
+    font-size: 35px;
+}
+
+.itemsPage_rightBlock_addButton {
+    width: 120px;
+    height: 45px;
+    font-size: 20px;
+    text-align: center;
+    border-radius: 5px;
+    background: linear-gradient(35deg, #1A6DFF, #C822FF);
+    margin: 50px 0;
+    color: white;
+    padding: 7px;
+    cursor: pointer; 
+}
+
+@media screen and (max-width: 900px){
+    .itemsPage_mainBlock {
+        padding: 5px 35px;
+    }
+
+    .itemsPage_leftBlock{
+        width: 100%;
+    }
+
+    .itemsPage_rightBlock {
+        padding: 10px;
+        width: 100%;
+    }
+
+    .itemsPage_title {
+        font-size: 25px;
+    }
+
+    .itemsPage_rightBlock_description{
+        font-size: 16px;
+    }
+
+    .itemsPage_rightBlock_price{
+        font-size: 25px;
+    }
+
+    .itemsPage_rightBlock_addButton {
+        position: fixed;
+        right: 10px;
+        bottom: 10px;
+        margin: 0;
+    }
+}
