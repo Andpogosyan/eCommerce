@@ -1,0 +1,28 @@
+.adminPageHeader {
+    position: relative;
+    height: 60px;
+    padding: 10px 10px 10px 30px;
+    font-size: 20px;
+}
+
+.addItemButton {
+    position: absolute;
+    right: 0;
+    top: 15px;
+    display: inline-block;
+    width: 30px;
+    cursor: pointer;
+}
+
+
+.addCategoryButton {
+    position: absolute;
+    right: 40px;
+    top: 15px;
+    display: inline-block;
+    width: 30px;
+    cursor: pointer;
+}
+
+
+

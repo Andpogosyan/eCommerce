@@ -1,0 +1,90 @@
+.binHeader {
+    /* display: flex;
+    justify-content: space-between;
+    text-align: left; */
+    height: 60px;
+    font-size: 20px;
+    padding: 10px 10px 10px 30px
+}
+
+
+.binItem {
+    width: 70%;
+    height: 200px;
+    display: flex;
+    box-shadow: 4px 4px 8px 0px rgba(34, 60, 80, 0.2);
+    border-radius: 5px;
+    padding: 10px;
+    margin: 20px;
+}
+
+.binItem img {
+    width: 180px;
+    max-height: 100%;
+}
+
+.buyButton {
+    width: 120px;
+    height: 45px;
+    font-size: 20px;
+    text-align: center;
+    border-radius: 5px;
+    background: linear-gradient(35deg, #1A6DFF, #C822FF);
+    margin: 50px auto;
+    color: white;
+    padding: 7px;
+    cursor: pointer;
+}
+
+
+.binDeafultBlock {
+    text-align: center;
+}
+
+.binDeafultBlock p {
+    font-size: 35px;
+    color: grey;
+}
+
+.binDeafultBlock a {
+    font-size: 18px;
+}
+
+.binPageTotal {
+    font-size: 20px;
+    text-align: end;
+    margin: 0 50px;
+}
+
+
+
+@media screen and (max-width: 900px) {
+    .binItem {
+        width: 90%;
+        height: 100px;
+        display: flex;
+        box-shadow: 4px 4px 8px 0px rgba(34, 60, 80, 0.2);
+        border-radius: 5px;
+        padding: 10px;
+        margin: 10px;
+    }
+    
+    .binItem img {
+        width: 90px;
+        max-height: 100%;
+        margin-right: 30px;
+    }
+    
+    .buyButton {
+        width: 120px;
+        height: 45px;
+        font-size: 20px;
+        text-align: center;
+        border-radius: 5px;
+        background: linear-gradient(35deg, #1A6DFF, #C822FF);
+        margin: 50px auto;
+        color: white;
+        padding: 7px;
+        cursor: pointer;
+    }
+}

@@ -1,0 +1,41 @@
+
+.signForm {
+    width: 60%;
+    margin: 30px auto;
+    padding: 20px;
+    background-color: rgba(46, 46, 46, 0.1);
+    border-radius: 5px;
+}
+
+.signForm__field {
+    display: flex;
+    justify-content: space-between;
+    margin: 20px;
+}
+
+.signForm__field_title {
+    font-size: 20px;
+    text-transform: capitalize;
+}
+
+
+.signForm__field_input {
+    width: 60%;
+
+    border-image-source: linear-gradient(35deg, #1A6DFF, #C822FF);
+    border-width: 1pt;
+    border-image-slice: 1;
+}
+
+.registerButton{
+    width: 120px;
+    height: 45px;
+    font-size: 20px;
+    text-align: center;
+    border-radius: 5px;
+    background: linear-gradient(35deg, #1A6DFF, #C822FF);
+    margin: 20px auto 0 auto;
+    color: white;
+    padding: 7px;
+    cursor: pointer;
+}

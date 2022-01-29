@@ -1,0 +1,34 @@
+.mainPageHeader {
+    /* display: flex;
+    justify-content: space-between;
+    text-align: left; */
+    height: 60px;
+    font-size: 20px;
+    padding: 10px 10px 10px 30px
+}
+
+.mainPage__itemsList {
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+}
+
+.sortingSelect {
+    height: 25px;
+    font-size: 14px;
+    width: 200px;
+    
+    border-image-source: linear-gradient(35deg, #1A6DFF, #C822FF);
+    border-width: 1pt;
+    border-image-slice: 1;
+}
+
+.sortingSelect:focus {
+    height: 25px;
+    font-size: 14px;
+    width: 200px;
+    
+    border-image-source: linear-gradient(35deg, #1A6DFF, #C822FF);
+    border-width: 1pt;
+    border-image-slice: 1;
+}

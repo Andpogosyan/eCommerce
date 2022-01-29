@@ -1,0 +1,106 @@
+/* Стили айтемов для главной страницы */
+
+.pageItem {
+    box-shadow: 4px 4px 8px 0px rgba(34, 60, 80, 0.2);
+    border-radius: 5px;
+    padding: 10px;
+    margin-bottom: 40px;
+    width: 23%;
+}
+
+.itemImage {
+    width: 100%;
+    height: 300px;
+    object-fit: contain;
+    cursor: pointer;
+}
+
+.itemTitle {
+    color: grey;
+    cursor: pointer;
+}
+
+.itemPrice {
+    font-size: 21px;
+}
+
+.itemPrice__name {
+    display: flex;
+    justify-content: space-between;
+}
+
+.buyLogo {
+    max-width: 30px;
+    cursor: pointer;
+}
+
+
+/* Стили айтемов для страницы админа */
+
+.adminItem {
+    box-shadow: 4px 4px 8px 0px rgba(34, 60, 80, 0.2);
+    border-radius: 5px;
+    padding: 10px;
+    margin-bottom: 40px;
+    width: 23%;
+}
+
+.adminImage {
+    width: 100%;
+    height: 300px;
+    object-fit: contain;
+}
+
+.adminTitle {
+    color: grey
+}
+
+.adminPrice {
+    font-size: 21px;
+}
+
+.adminPrice__name {
+    display: flex;
+    justify-content: space-between;
+}
+
+.buyLogo {
+    max-width: 30px;
+    cursor: pointer;
+}
+
+.editLogo {
+    max-width: 30px;
+    cursor: pointer;
+}
+
+.item_delete_button{
+    color: red;
+    padding-top: 8px;
+}
+
+
+
+@media screen and (max-width: 1000px){
+    .pageItem {
+        width: 40%
+    }
+    .adminItem {
+        width: 40%
+    }
+}
+
+@media screen and (max-width: 500px){
+    .pageItem {
+        width: 98%;
+    }
+    .adminItem {
+        width: 98%;
+    }
+    .itemImage {
+        height: 250px;
+    }
+    .adminImage {
+        height: 250px;
+    }
+}
