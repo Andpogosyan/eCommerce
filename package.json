@@ -5,8 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "env-cmd mocha  --require jsdom-global/register --require ignore-styles 'test/**/*.test.ts'",
-    "start": "npx webpack serve",
-    "build": "webpack"
+    "start": "npx webpack serve"
   },
   "keywords": [],
   "author": "",
