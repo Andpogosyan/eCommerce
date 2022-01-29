@@ -13,9 +13,9 @@ import { PageIds } from "../api/itemsData";
 
 
 class App {
-    private static container: HTMLElement = document.body;
-    private static defaultPageId: string = 'current-page';
-    private header: Header;
+    public static container: HTMLElement = document.body;
+    public static defaultPageId: string = 'current-page';
+    public header: Header;
     
 
     static renderNewPage(idPage: string) {
@@ -54,7 +54,7 @@ class App {
     }
 
     private enableRouteChange(){
-        window.addEventListener('hashchange', () => {
+        return window.addEventListener('hashchange', () => {
             const hash = window.location.hash.slice(1)
             
             App.renderNewPage(hash.includes('/') ? hash.split('/')[0] : hash)

@@ -19,6 +19,7 @@ class MainPage extends Page {
     constructor(id: string) {
         super('main-page')
     }
+
     setItems (data: Array<{title: string, description: string, price: string, url: string, id: number, category: string}>, categories: Array<{id: number, name: string}>) {
         this.items = data
         this.categories = categories
@@ -35,8 +36,6 @@ class MainPage extends Page {
     handleChangeSort(e: any){
         this.setSort(e.target.value)
     }
-
-
 
     render(){
         if(this.categories.length > 0){

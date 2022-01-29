@@ -6,8 +6,8 @@ import { deleteItem } from "../api/firebaseData";
 
 
 class ItemBlock extends Component {
-    private item: {title : string , url: string, price: string, description: string, id: number, category: string, count?:number};
-    private page: string;
+    public item: {title : string , url: string, price: string, description: string, id: number, category: string, count?:number};
+    public page: string;
 
     constructor(tagName: string, className: string, itemData: {title : string , url: string, price: string, description: string, id: number, category: string, count?:number}, page: string){
         super(tagName, className)

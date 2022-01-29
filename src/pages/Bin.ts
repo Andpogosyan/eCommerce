@@ -7,7 +7,7 @@ import { closeModal } from "../utils/modal";
 
 
 class BinPage extends Page {
-    private visibleItems : string = 'all'
+    public visibleItems : string = 'all'
     static TextObject = {
         MainTitle: 'Your Bin'
     }

@@ -13,9 +13,6 @@ const STORAGE_BUCKET = process.env.STORAGE_BUCKET
 const MESSAGING_SENDER_ID = process.env.MESSAGING_SENDER_ID
 const APP_ID = process.env.APP_ID
 
-
-console.log(process.env, '11111')
-
 const firebaseConfig = {
     apiKey: API_KEY,
     authDomain: AUTH_DOMAIN,
@@ -25,9 +22,6 @@ const firebaseConfig = {
     messagingSenderId: MESSAGING_SENDER_ID,
     appId: APP_ID
 }
-
-console.log(firebaseConfig);
-
 
 export const base = firebase.initializeApp(firebaseConfig)
 
