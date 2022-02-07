@@ -38,7 +38,9 @@ module.exports = {
   },
   plugins: [
     new HtmlWebpackPlugin({ template: './src/index.html'}),
-    new Dotenv(),
+    new Dotenv({
+      systemvars: true
+  }),
   ],
   resolve: {
     extensions: [ ".tsx", ".ts", ".js" ]
