@@ -10,7 +10,7 @@ _chai.expect;
 @suite class MainPageTest {
     private SUT: MainPage;
     private visibleItems: string;
-    private categories;
+    private categories: any;
 
     before(){
         this.SUT = new MainPage('')

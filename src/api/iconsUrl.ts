@@ -19,3 +19,5 @@ export const addCategoryIcon = 'https://img.icons8.com/nolan/96/enter-pin.png'
 export const deleteItemIcon = 'https://img.icons8.com/nolan/96/recycle-bin.png'
 
 export const signOutIcon = 'https://img.icons8.com/nolan/96/exit.png'
+
+export const historyIcon = 'https://img.icons8.com/nolan/96/view-details.png'

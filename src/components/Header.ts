@@ -98,7 +98,7 @@ class Header extends Component {
         const localStorageItems = localStorage.items
         
         let count = 0
-        if(localStorageItems) JSON.parse(localStorageItems).forEach((element: { count: number; }) => {
+        localStorageItems && JSON.parse(localStorageItems).forEach((element: { count: number; }) => {
           return count = count + element.count
         });
 

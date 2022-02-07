@@ -3,7 +3,8 @@ import ItemBlock from "../components/Item"
 import Modal from "../components/Modal"
 import { setBinItems } from "../state/actions"
 import { closeModal } from "./modal"
-
+import { Item, Order } from '../api/itemsData'
+import { deleteOrder } from "../api/firebaseData"
 
 
 export const createSelect = (func: (e: any) => void, categories: Array<{id: number, name: string}>, selectedCategory: string) => {
@@ -49,6 +50,44 @@ export const createModalOpenButton = (container: HTMLElement, url: string, type:
         })
         
         let modalBlock = new Modal(type, categories)
+
+        // modalBackground.append(modalBlock.render())
+
+        const body = document.body
+
+        body.style.overflow = 'hidden'
+        body.style.marginRight = '15px'
+
+        container.append(modalBackground)
+        container.append(modalBlock.render())
+    })
+
+    return button
+}
+
+export const createModalOpenButtonOrders = (container: HTMLElement, url: string, orders: Array<Order>) => {
+    
+    const button = document.createElement('div')
+    button.className =  'showOrdersButton'
+    button.id = 'showOrdersButton'
+
+    const icon = document.createElement('img')
+    icon.src = url
+    icon.alt = 'addItemIcon'
+
+    button.append(icon)
+
+    button.addEventListener('click', () => {
+        let modalBackground = document.createElement('div')
+        modalBackground.className = 'modalBackground'
+        modalBackground.id = 'modalBackground'
+        
+        
+        modalBackground.addEventListener('click', () => {
+            closeModal()
+        })
+        
+        let modalBlock = new Modal('showOrders', undefined, undefined, orders)
 
         // modalBackground.append(modalBlock.render())
 
@@ -146,4 +185,65 @@ export const createItemPage = (item: {title: string, description: string, price:
     mainBlock.append(rightBlock)
 
     return mainBlock
+}
+
+export const createOrdersBlock = (orders: Array<Order>) => {
+    const mainOrdersBlock = document.createElement('div')
+    mainOrdersBlock.className = 'mainOrdersBlock'
+    console.log(orders)
+    orders.map((el: Order) => {
+        const orderBlock = document.createElement('div')
+        orderBlock.className = 'orderBlock'
+
+        const orderBlockHeader = document.createElement('p')
+        orderBlockHeader.className = 'orderBlock_header'
+        orderBlockHeader.innerText = 'Order Id: ' + el.id
+        orderBlock.append(orderBlockHeader)
+
+        const ordersItems = document.createElement('div')
+        ordersItems.className = 'orderBlock_list'
+
+        el.items.map(( item: Item ) => {
+            const itemBlock = document.createElement('div')
+            itemBlock.className = 'orderBlock_list__item'
+
+            const itemImage = document.createElement('img')
+            itemImage.alt = 'itemImage'
+            itemImage.src = item.url
+            itemImage.className = 'ordersBlock_list__itemImage'
+
+            itemBlock.append(itemImage)
+
+            const infoBlock = document.createElement('div')
+            infoBlock.className = 'ordersBlock_item_info'
+
+            const itemTitle = document.createElement('p')
+            itemTitle.innerText = item.title
+            itemTitle.className = 'ordersBlock_list__itemTitle'
+
+            infoBlock.append(itemTitle)
+
+            const itemPrice = document.createElement('p')
+            itemPrice.innerText = item.price + 'p'
+            itemPrice.className = 'ordersBlock_list__itemPrice'
+
+            infoBlock.append(itemPrice)
+
+            itemBlock.append(infoBlock)
+            ordersItems.append(itemBlock)
+        })
+        orderBlock.append(ordersItems)
+        
+        const deleteButton = document.createElement('div')
+        deleteButton.innerText = 'DELETE ORDER'
+        deleteButton.className = 'orderBlock_deleteButton'
+        deleteButton.addEventListener('click', () => {
+            deleteOrder(el.id)
+        })
+
+        orderBlock.append(deleteButton)
+
+        mainOrdersBlock.append(orderBlock)
+    })    
+    return mainOrdersBlock
 }

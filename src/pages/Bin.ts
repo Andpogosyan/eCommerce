@@ -1,13 +1,17 @@
 import Page from "../templates/page";
-import { createFeed } from "../utils/domElements";
+import { createFeed, createModalOpenButton, createModalOpenButtonOrders } from "../utils/domElements";
 import '../styles/binPage.css'
 import Modal from "../components/Modal";
 import { closeModal } from "../utils/modal";
-
-
+import { onValue, ref } from "firebase/database";
+import { db } from "../api/firebaseData";
+import { Item, Category, Order } from '../api/itemsData'
+import { historyIcon } from "../api/iconsUrl";
 
 class BinPage extends Page {
     public visibleItems : string = 'all'
+    public orders : Array<Order>
+    public toLoadOrders : boolean = true
     static TextObject = {
         MainTitle: 'Your Bin'
     }
@@ -15,31 +19,73 @@ class BinPage extends Page {
     constructor(id: string){
         super(id)
     }
+    setOrders (orders: Array<Order>) {
+        this.orders = orders
+        this.container.innerHTML = ''
+        this.toLoadOrders = false
 
+        this.render()
+    }
     createTotal (items: Array<{title: string, url: string, price: string, id: number, description: string, count: number}>) {
         let total = 0
-
+    
         items.concat().forEach((el: {title: string, url: string, price: string, id: number, description: string, count: number}) => {
             return total = total + (+el.price * el.count)
         });
-        
+
         const totalBlock = document.createElement('p')
         totalBlock.innerText = `Total: ${total}р`
         totalBlock.className = 'binPageTotal'
         
-        this.container.append(totalBlock)
-
+        return totalBlock
     }
+
     render() {
+        console.log(this.container, 'blya eto ebuchi container')
+
+
+       
+
+        const logined = localStorage.logined
+        const email = localStorage.email
+
+
+        if(logined && JSON.parse(logined) && !this.orders && this.toLoadOrders){
+            const ordersRef = ref(db)
+            onValue(ordersRef, (snapshot) => {
+                const { orders } = snapshot.val()
+                
+                const ordersData: Array<Order> = Object.values(orders)
+                
+                this.setOrders(ordersData.filter(el => el.user.email === JSON.parse(email)))
+            })
+        }
+        
+        if(this.orders && !this.toLoadOrders){
+        console.log(this.container)
+        this.container.innerHTML = ''
+
+        const titleCheck = document.querySelector('.binHeader')
+       
         const title = this.createHeaderTitle(BinPage.TextObject.MainTitle, 'binHeader') 
-        this.container.append(title)
 
-        const localStorageItems = JSON.parse(localStorage.items)
+        
+        titleCheck ? '' : this.container.append(title)
+        
+        title.append(createModalOpenButtonOrders(this.container, historyIcon, this.orders))
+        
+        
+        const localStorageItemsData : any  = localStorage.items
+        
+        if(localStorageItemsData && JSON.parse(localStorageItemsData).length > 0){
+            const oldTotal = document.querySelector('.binPageTotal')
+            oldTotal?.remove()
 
-        if(localStorageItems.length > 0){
-            this.createTotal(localStorageItems)
+            const totalBlock = this.createTotal(JSON.parse(localStorageItemsData))
+            this.container.append(totalBlock)
+            
 
-            createFeed(this.container, this.visibleItems, localStorageItems, 'bin')
+            createFeed(this.container, this.visibleItems, JSON.parse(localStorageItemsData), 'bin')
 
             const button = document.createElement('div')
             button.className = 'buyButton'
@@ -54,7 +100,7 @@ class BinPage extends Page {
                     closeModal()
                 })
                     
-                let modalBlock = new Modal('sendOrder', [], localStorageItems)
+                let modalBlock = new Modal('sendOrder', [], JSON.parse(localStorageItemsData))
             
                 // modalBackground.append(modalBlock.render())
             
@@ -68,7 +114,7 @@ class BinPage extends Page {
             })
 
             this.container.append(button)
-        } else {
+        }  else {
             const defaultBlock = document.createElement('div')
             defaultBlock.className = 'binDeafultBlock'
 
@@ -83,8 +129,8 @@ class BinPage extends Page {
             defaultBlock.append(link)
 
             this.container.append(defaultBlock)
+            }
         }
-
         return this.container
      }
 }

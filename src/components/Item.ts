@@ -21,7 +21,12 @@ class ItemBlock extends Component {
        itemImg.src = url
        itemImg.alt = className
        itemImg.className = className
+
        className === 'itemImage' && itemImg.addEventListener('click', () => {
+        window.location.hash = '#item/' + this.item.id
+    })
+
+    className === 'adminImage' && itemImg.addEventListener('click', () => {
         window.location.hash = '#item/' + this.item.id
     })
        return itemImg

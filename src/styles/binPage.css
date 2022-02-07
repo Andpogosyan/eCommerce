@@ -35,7 +35,42 @@
     padding: 7px;
     cursor: pointer;
 }
+.orderBlock {
+    margin: 10px 5px;
+    box-shadow: 4px 4px 8px 0px rgba(34, 60, 80, 0.2);
+    border-radius: 5px;
+}
 
+.orderBlock_header {
+    font-size: 20px;
+    font-weight: bold;
+}
+.orderBlock_list__item {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 5px 0;
+}
+
+.ordersBlock_list__itemImage {
+    width:50px;
+    height: 50px;
+    border-radius: 5px;
+    box-shadow: 4px 4px 8px 0px rgba(34, 60, 80, 0.2);
+    margin-right: 5px;
+    object-fit: contain;
+}
+
+.ordersBlock_list__itemTitle {
+    color: grey;
+    font-size: 16px;
+}
+
+.orderBlock_deleteButton {
+    color: red;
+    padding: 0 10px;
+    text-align: right;
+    font-size: 18px;
+}
 
 .binDeafultBlock {
     text-align: center;

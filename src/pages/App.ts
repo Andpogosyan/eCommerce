@@ -65,8 +65,6 @@ class App {
         this.header = new Header('header', 'header')
     }
 
-
-
     run() {
         const hash = window.location.hash.slice(1)
         

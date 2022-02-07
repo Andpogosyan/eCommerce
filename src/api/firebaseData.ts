@@ -107,6 +107,11 @@ export const deleteItem = (id: number) => {
         remove(itemRef) 
 }
 
+export const deleteOrder = (id: number) => {
+    let orderRef = ref(db, 'orders/' + id)
+    remove(orderRef)
+}
+
 export const  submitForm = (url: string, data: {title?: string, description?: string, price?: string, url?: string, category?: string, id?: number, name?: string}) => {
     set(ref(db, url), data)
     let list = document.querySelector('.mainPage__itemsList')

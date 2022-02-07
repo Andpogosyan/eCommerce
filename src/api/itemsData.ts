@@ -7,6 +7,33 @@ export const enum PageIds {
     ItemPage = 'item',
 }
 
+export interface Item {
+    title: string, 
+    description: string, 
+    price: string, 
+    url: string, 
+    category: string, 
+    id: number, 
+    name: string, 
+    count: number
+}
+
+export interface Category {
+    name: string, 
+    id: number
+}
+
+export interface Order {
+    id: number,
+            total: number, 
+            items: 
+                Array<Item>,
+            user: {
+                email: string,
+                name: string
+            }
+}
+
 export const Buttons = [
     {
         id: PageIds.MainPage,
@@ -29,6 +56,17 @@ export const loginFields = [
     },
     {
         name: 'password',
+        component: 'input'
+    }
+]
+
+export const sendOrderFields = [
+    {
+        name: 'email',
+        component: 'input'
+    },
+    {
+        name: 'name',
         component: 'input'
     }
 ]

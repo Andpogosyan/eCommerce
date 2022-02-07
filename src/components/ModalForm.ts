@@ -1,6 +1,6 @@
 import Component from '../templates/components'
 import { submitForm, sendOrder } from '../api/firebaseData';
-import { fields, loginFields } from '../api/itemsData';
+import { fields, loginFields, sendOrderFields } from '../api/itemsData';
 
 
 class ModalForm extends Component {
@@ -83,7 +83,7 @@ class ModalForm extends Component {
                 this.container.append(fieldBlock)
             })
         } else if(this.type === 'sendOrder') {
-            loginFields.forEach((field: {name: String, component: string}) => {
+            sendOrderFields.forEach((field: {name: String, component: string}) => {
                 const fieldBlock = document.createElement('div')
                 fieldBlock.className = 'modalBlock__fieldBlock'
                 const title = document.createElement('p')
@@ -94,7 +94,7 @@ class ModalForm extends Component {
                 let input = document.createElement(field.component) as HTMLInputElement
                 input.id = field.name.toLowerCase()
                 const email : string = JSON.parse(localStorage.email)
-                if(field.name === 'Email' && email){
+                if(field.name === 'email' && email){
                     input.value = email as string
                 }
     

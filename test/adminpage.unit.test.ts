@@ -10,7 +10,7 @@ _chai.expect;
 @suite class AdminPageTest {
     private SUT: AdminPage;
     private visibleItems: string;
-    private categories;
+    private categories: any;
 
     before(){
         this.SUT = new AdminPage('')
