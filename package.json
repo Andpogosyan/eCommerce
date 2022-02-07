@@ -6,7 +6,7 @@
   "scripts": {
     "test": "env-cmd mocha  --require jsdom-global/register --require ignore-styles 'test/**/*.test.ts'",
     "start": "npx webpack serve",
-    "build": "webpack"
+    "build": "node ./scripts/create-env.js && webpack"
   },
   "keywords": [],
   "author": "",
