@@ -62,9 +62,10 @@ class Header extends Component {
 
     renderPageButtons(countItems: number) {
        const pageButtons = document.createElement('div')
-       
-       const logined = JSON.parse(localStorage.logined)
-       const admin = JSON.parse(localStorage.admin)
+       const checkLogin = localStorage.logined
+       const logined = checkLogin ? JSON.parse(checkLogin) : false
+       const checkAdmin = localStorage.admin
+       const admin = checkAdmin ? JSON.parse(checkAdmin) : false
 
        Buttons.forEach((button) => {
            const buttonHTML = document.createElement('a')
