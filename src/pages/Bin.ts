@@ -41,16 +41,10 @@ class BinPage extends Page {
     }
 
     render() {
-        console.log(this.container, 'blya eto ebuchi container')
-
-
-       
-
         const logined = localStorage.logined
         const email = localStorage.email
 
-
-        if(logined && JSON.parse(logined) && !this.orders && this.toLoadOrders){
+        if(logined && JSON.parse(logined) && this.toLoadOrders){
             const ordersRef = ref(db)
             onValue(ordersRef, (snapshot) => {
                 const { orders } = snapshot.val()
@@ -60,9 +54,11 @@ class BinPage extends Page {
                 this.setOrders(ordersData.filter(el => el.user.email === JSON.parse(email)))
             })
         }
+        if((!logined && this.toLoadOrders || (logined || !JSON.parse(logined))) && this.toLoadOrders){
+            this.setOrders([])
+        }
         
-        if(this.orders && !this.toLoadOrders){
-        console.log(this.container)
+        if(!this.toLoadOrders){
         this.container.innerHTML = ''
 
         const titleCheck = document.querySelector('.binHeader')
@@ -72,7 +68,7 @@ class BinPage extends Page {
         
         titleCheck ? '' : this.container.append(title)
         
-        title.append(createModalOpenButtonOrders(this.container, historyIcon, this.orders))
+        this.orders.length > 0 && title.append(createModalOpenButtonOrders(this.container, historyIcon, this.orders))
         
         
         const localStorageItemsData : any  = localStorage.items

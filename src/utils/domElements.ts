@@ -190,7 +190,6 @@ export const createItemPage = (item: {title: string, description: string, price:
 export const createOrdersBlock = (orders: Array<Order>) => {
     const mainOrdersBlock = document.createElement('div')
     mainOrdersBlock.className = 'mainOrdersBlock'
-    console.log(orders)
     orders.map((el: Order) => {
         const orderBlock = document.createElement('div')
         orderBlock.className = 'orderBlock'
